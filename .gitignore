@@ -1,0 +1,11 @@
+build/
+target/
+war/
+.idea/
+.classpath
+.project
+*.iml
+*.ipr
+*.iws
+*.class
+velocity.log*
