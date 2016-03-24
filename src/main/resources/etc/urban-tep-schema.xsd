@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="descriptor"
+           targetNamespace="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd"
+           xmlns="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="qualified"
+           elementFormDefault="qualified">
+  <xs:element name="descriptor">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="processor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string" />
+              <xs:element name="executable" type="xs:string" />
+              <xs:element name="title" type="xs:string" />
+              <xs:element name="description" type="xs:string" minOccurs="0" />
+              <xs:element name="parameters">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="name" type="xs:string" />
+                          <xs:element name="type" type="xs:string" minOccurs="0" />
+                          <xs:element name="description" type="xs:string" minOccurs="0" />
+                          <xs:element name="default" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="packaging" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="version" type="xs:string" />
+                    <xs:element name="type" type="xs:string" minOccurs="0" />
+                    <xs:element name="dependencies" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="dependency" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="name" type="xs:string" />
+                                <xs:element name="version" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="resources" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="resource" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="name" type="xs:string" />
+                                <xs:element name="value" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

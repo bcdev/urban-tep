@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<utep:descriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:utep="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd"
+                 xsi:schemaLocation="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd urban-tep-schema.xsd">
+  <utep:processor>
+    <utep:name>Fmask8</utep:name>
+    <utep:executable>fmask-and-merge.sh</utep:executable>
+    <utep:title>Urban TEP Fmask for Landsat 8</utep:title>
+    <utep:description><p>Performs cloud detection for Landsat 8 L1 products.</p></utep:description>
+    <utep:parameters>
+      <utep:parameter>
+        <utep:name>threshold</utep:name>
+        <utep:type>string</utep:type>
+        <utep:description>cloud probability threshold</utep:description>
+        <utep:default>0.2</utep:default>
+      </utep:parameter>
+    </utep:parameters>
+    <utep:packaging>
+      <utep:name>fmask</utep:name>
+      <utep:version>3.2</utep:version>
+      <utep:type>Docker</utep:type>
+      <utep:dependencies>
+        <utep:dependency>
+          <utep:name>snap</utep:name>
+        </utep:dependency>
+        <utep:dependency>
+          <utep:name>mcr_root</utep:name>
+          <utep:version>v81</utep:version>
+        </utep:dependency>
+      </utep:dependencies>
+      <utep:resources>
+        <utep:resource>
+          <utep:name>memory</utep:name>
+          <utep:value>7000</utep:value>
+        </utep:resource>
+        <utep:resource>
+          <utep:name>timelimit</utep:name>
+          <utep:value>3600</utep:value>
+        </utep:resource>
+      </utep:resources>
+    </utep:packaging>
+  </utep:processor>
+</utep:descriptor>

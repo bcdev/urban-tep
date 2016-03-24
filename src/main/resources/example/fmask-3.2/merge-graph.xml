@@ -1,0 +1,28 @@
+<graph id="graph1">
+    <version>1.0</version>
+    <node id="l8at30m">
+      <operator>Read</operator>
+      <sources/>
+      <parameters>
+        <file>${masterProduct}</file>
+        <formatName>Landsat8GeoTIFF30m</formatName>
+      </parameters>
+    </node>
+    <node id="withmask">
+        <operator>Merge</operator>
+        <sources>
+            <masterProduct>l8at30m</masterProduct>
+            <sourceProducts>${sourceProducts}</sourceProducts>
+        </sources>
+        <parameters>
+            <includes>
+                <include>
+                    <productId>sourceProducts0</productId>
+                    <name>Band_1</name>
+                    <newName>fmask</newName>
+                </include>
+            </includes>
+            <geographicError>0.01</geographicError>
+        </parameters>
+    </node>
+</graph>
