@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 rootdir=$(dirname $(dirname $0))
 descriptor=$1
@@ -21,7 +20,7 @@ tar cf ../urbantep-${packagename}-${packageversion}.tar.gz *
 
 cd ..
 
-tar cf urbantep-${packagename}-package-info.tar.gz Dockerfile
+tar czf urbantep-${packagename}-package-info.tar.gz Dockerfile
 
 xsltproc $rootdir/etc/urban-tep-bc-descriptor-to-bundle-descriptor.xsl $descriptor > bundle-descriptor.xml
 xsltproc $rootdir/etc/urban-tep-bc-descriptor-to-process-script.xsl $descriptor > ${processorname}-process

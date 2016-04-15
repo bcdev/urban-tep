@@ -19,18 +19,6 @@
     </parameterDescriptor>
   </xsl:template>
 
-  <xsl:template match="utep:dependency[utep:name='snap']">
-    <jobParameter>
-      <name>calvalus.snap.bundle</name>
-      <value>snap-<xsl:value-of select="$snap.version"/>-bundle</value>
-    </jobParameter>
-  </xsl:template> 
-  <xsl:template match="utep:dependency[utep:name='mcr_root']">
-    <jobParameter>
-      <name>mcr_root.version</name>
-      <value>mcr_root-<xsl:value-of select="$mcr_root.version"/></value>
-    </jobParameter>
-  </xsl:template>
   <xsl:template match="utep:resource[utep:name='memory']">
     <jobParameter>
       <name>calvalus.hadoop.mapreduce.map.memory.mb</name>
@@ -63,7 +51,6 @@
           <descriptionHtml><xsl:value-of select="utep:description"/></descriptionHtml>
           <jobConfig>
             <xsl:apply-templates select="utep:packaging/utep:resources"/>
-	        <xsl:apply-templates select="utep:packaging/utep:dependencies"/>
           </jobConfig>
         </processorDescriptor>
       </processorDescriptors>

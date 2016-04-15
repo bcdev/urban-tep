@@ -13,8 +13,8 @@
   <xsl:param name="snap.version">2.0.2</xsl:param>
   <xsl:param name="mcr_root.version">v81</xsl:param>
 
-  <xsl:template match="utep:dependency[utep:name='snap']"> -v $(pwd)/snap-2.0.2:/urbantep/software/snap</xsl:template>
-  <xsl:template match="utep:dependency[utep:name='mcr_root']"> -v $(pwd)mcr_root-v81/mcr_root:/urbantep/software/mcr_root</xsl:template>
+  <xsl:template match="utep:dependency[utep:name='snap']"> -v $(pwd)/snap-2.0.2:/urbantep/software/snap-2.0.2</xsl:template>
+  <xsl:template match="utep:dependency[utep:name='mcr_root']"> -v $(pwd)/mcr_root-v81:/urbantep/software/mcr_root-v81</xsl:template>
 
   <xsl:template match="/utep:descriptor/utep:processor">#!/bin/bash
 set -e
@@ -26,7 +26,7 @@ echo "$key=$parameters.get($key)" >> parameters
 #[[
 docker build -t urbancentos <xsl:value-of select="utep:packaging/utep:name"/>-package-info
 
-docker run -i -t --rm=true<xsl:apply-templates select="utep:packaging/utep:dependencies"/> -v $(pwd):/wd -v $(pwd)/urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/>:/urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/> urbancentos /urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/>/<xsl:value-of select="utep:executable"/> /wd/$(basename $1) /wd/parameters
+docker run -i -t --rm=true<xsl:apply-templates select="utep:packaging/utep:dependencies"/> -w /wd -v $(pwd):/wd -v $(pwd)/urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/>:/urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/> urbancentos /urbantep-<xsl:value-of select="utep:packaging/utep:name"/>-<xsl:value-of select="utep:packaging/utep:version"/>/<xsl:value-of select="utep:executable"/> /wd/$(basename $1) /wd/parameters
 ]]#
 </xsl:template>
 

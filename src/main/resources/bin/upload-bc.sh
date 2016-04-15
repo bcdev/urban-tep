@@ -89,7 +89,7 @@ cat req-auth | nc $SERVER_NAME $SERVER_PORT > auth-response
 if grep -q "HTTP/1.1 302 Found" auth-response; then
 	echo "Successful authentication"
 else
-	echo "Authentication for user '${USER}' failed"
+	echo "Authentication for user '${BC_USER}' failed"
 fi
 
 echo "POST /calvalus/calvalus/upload?dir=software&bundle=true HTTP/1.1

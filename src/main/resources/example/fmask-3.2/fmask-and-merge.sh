@@ -9,8 +9,8 @@ mask=${id}_MTLFmask.hdr
 output=${id}-fmask.nc
 
 wd=$(pwd)
-SNAP_DIR=/urbantep/software/snap
-MCR_DIR=/urbantep/software/mcr_root/v81/
+SNAP_DIR=/urbantep/software/snap-2.0.2
+MCR_DIR=/urbantep/software/mcr_root-v81
 FMASK_DIR=$(cd $(dirname $0); pwd)
 
 if [ ! -e $wd/$l1 ]; then
