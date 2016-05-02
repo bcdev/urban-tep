@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+#foreach($key in $parameters.keySet() )
+echo "$key=$parameters.get($key)" >> parameters
+#end
+
+#[[
+DOCKERINFO_DIR=$(ls -ld $(pwd)/urbantep-fmask-package-info|awk '{print $11}')
+docker build -t urbancentos $DOCKERINFO_DIR
+
+SNAP_DIR=$(ls -ld $(pwd)/snap-2.0.2|awk '{print $11}')
+MCR_DIR=$(ls -ld $(pwd)/mcr_root-v81|awk '{print $11}')
+FMASK_DIR=$(ls -ld $(pwd)/urbantep-fmask-3.2|awk '{print $11}')
+
+docker run -i -t --rm=true -v ${SNAP_DIR}:/urbantep/software/snap-2.0.2 -v ${MCR_DIR}:/urbantep/software/mcr_root-v81 -w /wd -v $(pwd):/wd -v ${FMASK_DIR}:/urbantep-fmask-3.2 urbancentos /urbantep-fmask-3.2/fmask-and-merge.sh /wd/$(basename $1) /wd/parameters
+]]#

@@ -23,8 +23,8 @@ cd ..
 tar czf urbantep-${packagename}-package-info.tar.gz Dockerfile
 
 xsltproc $rootdir/etc/urban-tep-bc-descriptor-to-bundle-descriptor.xsl $descriptor > bundle-descriptor.xml
-xsltproc $rootdir/etc/urban-tep-bc-descriptor-to-process-script.xsl $descriptor > ${processorname}-process
+xsltproc $rootdir/etc/urban-tep-bc-descriptor-to-process-script.xsl $descriptor > ${processorname}-process.vm
 
-zip urbantep-${packagename}-${packageversion}.zip urbantep-${packagename}-${packageversion}.tar.gz urbantep-${packagename}-package-info.tar.gz bundle-descriptor.xml ${processorname}-process
+zip urbantep-${packagename}-${packageversion}.zip urbantep-${packagename}-${packageversion}.tar.gz urbantep-${packagename}-package-info.tar.gz bundle-descriptor.xml ${processorname}-process.vm
 
-rm urbantep-${packagename}-${packageversion}.tar.gz urbantep-${packagename}-package-info.tar.gz bundle-descriptor.xml ${processorname}-process
+rm urbantep-${packagename}-${packageversion}.tar.gz urbantep-${packagename}-package-info.tar.gz bundle-descriptor.xml ${processorname}-process.vm
