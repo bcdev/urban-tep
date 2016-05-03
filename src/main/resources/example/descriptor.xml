@@ -7,6 +7,7 @@
     <utep:executable>fmask-and-merge.sh</utep:executable>
     <utep:title>Urban TEP Fmask for Landsat 8</utep:title>
     <utep:description><p>Performs cloud detection for Landsat 8 L1 products.</p></utep:description>
+    <utep:inputTypes>Landsat8</utep:inputTypes>
     <utep:parameters>
       <utep:parameter>
         <utep:name>threshold</utep:name>

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#set -x
 rootdir=$(dirname $(dirname $0))
 descriptor=$1
 

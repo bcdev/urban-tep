@@ -4,35 +4,35 @@
                 xmlns:ows="http://www.opengis.net/ows/1.1">
 <xsl:output method="text"/>
 
-<xsl:template match="/wps:ProcessDescriptions/wps:ProcessDescription/ows:Identifier">
+<xsl:template match="/wps:ProcessDescriptions/ProcessDescription/ows:Identifier">
 processorId : <xsl:value-of select="."/>
 </xsl:template>
 
-<xsl:template match="/wps:ProcessDescriptions/wps:ProcessDescription/ows:Abstract">
+<xsl:template match="/wps:ProcessDescriptions/ProcessDescription/ows:Abstract">
 description : <xsl:value-of select="."/><xsl:text>
 
 Parameters
 </xsl:text>
 </xsl:template>
 
-<xsl:template match="/wps:ProcessDescriptions/wps:ProcessDescription/wps:DataInputs/wps:Input[ows:Identifier='inputDataSetName']">inputDataSet : [<xsl:for-each select="wps:LiteralData/ows:AllowedValues/wps:Range">
+<xsl:template match="/wps:ProcessDescriptions/ProcessDescription/DataInputs/Input[ows:Identifier='inputDataSetName']">inputDataSet : <xsl:value-of select="ows:Title"/> [<xsl:for-each select="LiteralData/ows:AllowedValues/ows:Value">
 <xsl:value-of select="."/>
 <xsl:choose>
     <xsl:when test="position() != last()">,</xsl:when>
 </xsl:choose>
-</xsl:for-each>]
+</xsl:for-each>].
 </xsl:template>
 
-<xsl:template match="/wps:ProcessDescriptions/wps:ProcessDescription/wps:DataInputs/wps:Input[ows:Identifier='outputFormat']">inputDataSet : [<xsl:for-each select="wps:LiteralData/ows:AllowedValues/wps:Range">
+<xsl:template match="/wps:ProcessDescriptions/ProcessDescription/DataInputs/Input[ows:Identifier='outputFormat']">outputFormat : <xsl:value-of select="ows:Title"/> [<xsl:for-each select="LiteralData/ows:AllowedValues/ows:Value">
 <xsl:value-of select="."/>
 <xsl:choose>
     <xsl:when test="position() != last()">,</xsl:when>
 </xsl:choose>
-</xsl:for-each>]
+</xsl:for-each>].
 </xsl:template>
 
-<xsl:template match="/wps:ProcessDescriptions/wps:ProcessDescription/wps:DataInputs/wps:Input/ows:Identifier">
-<xsl:value-of select="."/> : 
+<xsl:template match="/wps:ProcessDescriptions/ProcessDescription/DataInputs/Input[ows:Identifier!='inputDataSetName' and ows:Identifier!='outputFormat']">
+<xsl:value-of select="ows:Identifier"/> : <xsl:value-of select="ows:Title"/>.
 </xsl:template>
 
 <xsl:template match="@*|node()">

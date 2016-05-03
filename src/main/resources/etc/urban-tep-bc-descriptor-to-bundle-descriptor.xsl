@@ -7,7 +7,7 @@
                 xmlns:utep="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 
-  <xsl:param name="snap.version">2.0.2</xsl:param>
+  <xsl:param name="snap.version">3.0.1</xsl:param>
   <xsl:param name="mcr_root.version">v81</xsl:param>
 
   <xsl:template match="utep:parameter">
@@ -46,7 +46,7 @@
           </parameterDescriptors>
           <executableName><xsl:value-of select="utep:name"/></executableName>
           <outputFormats>NetCDF,GeoTIFF,BEAM-DIMAP</outputFormats>
-          <inputProductTypes>Landsat8</inputProductTypes>
+          <inputProductTypes><xsl:value-of select="utep:inputTypes"/></inputProductTypes>
           <formatting>IMPLICIT</formatting>
           <descriptionHtml><xsl:value-of select="utep:description"/></descriptionHtml>
           <jobConfig>

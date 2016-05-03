@@ -16,7 +16,7 @@ packageversion=$(xmlstarlet sel -t -v "/utep:descriptor/utep:processor/utep:pack
 
 cd $packagedir/${packagename}-${packageversion}
 
-tar cf ../urbantep-${packagename}-${packageversion}.tar.gz *
+tar czf ../urbantep-${packagename}-${packageversion}.tar.gz *
 
 cd ..
 
