@@ -86,7 +86,7 @@ j_username=${BC_USER}&j_password=${PASSWORD}&submitBtn=Log+In" > req-auth
 # Authenticate
 cat req-auth | nc $SERVER_NAME $SERVER_PORT > auth-response
 
-if ["$(cat auth-response)" = ""]; then
+if [ "$(ls -s auth-response | cut -d ' ' -f 1)" = "0" ]; then
     echo "Routing problem. You may have used NAT for your network adapter. Please use Bridge."
 fi
 
