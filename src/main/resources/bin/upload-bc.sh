@@ -86,10 +86,15 @@ j_username=${BC_USER}&j_password=${PASSWORD}&submitBtn=Log+In" > req-auth
 # Authenticate
 cat req-auth | nc $SERVER_NAME $SERVER_PORT > auth-response
 
+if ["$(cat auth-response)" = ""]; then
+    echo "Routing problem. You may have used NAT for your network adapter. Please use Bridge."
+fi
+
 if grep -q "HTTP/1.1 302 Found" auth-response; then
 	echo "Successful authentication"
 else
 	echo "Authentication for user '${BC_USER}' failed"
+	exit 1
 fi
 
 echo "POST /calvalus/calvalus/upload?dir=software&bundle=true HTTP/1.1
