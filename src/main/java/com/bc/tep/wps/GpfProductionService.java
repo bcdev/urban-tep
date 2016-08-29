@@ -56,7 +56,7 @@ public class GpfProductionService implements ServletContextListener {
             String productUrl = "http://"
                                 + hostAddress + ":" + portNumber
                                 + "/" + PropertiesWrapper.get("wps.application.name")
-                                + "/" + PropertiesWrapper.get("lc.cci.output.directory")
+                                + "/" + PropertiesWrapper.get("utep.output.directory")
                                 + "/" + targetDir.getName()
                                 + "/" + filename;
             resultUrls.add(productUrl);

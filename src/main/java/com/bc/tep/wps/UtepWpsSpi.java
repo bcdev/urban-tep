@@ -15,22 +15,22 @@ public class UtepWpsSpi implements WpsServiceProvider {
 
     @Override
     public String getId() {
-        return "lc-cci";
+        return "utep";
     }
 
     @Override
     public String getName() {
-        return "LC CCI WPS Server";
+        return "Urban TEP WPS Server";
     }
 
     @Override
     public String getDescription() {
-        return "This is a LC CCI User Tools WPS implementation";
+        return "This is an Urban TEP WPS implementation";
     }
 
     @Override
     public WpsServiceInstance createServiceInstance(WpsServerContext wpsServerContext) {
-        String propertiesFileName = "lc-cci-wps.properties";
+        String propertiesFileName = "utep-wps.properties";
         try {
             PropertiesWrapper.loadConfigFile(propertiesFileName);
         } catch (IOException exception) {

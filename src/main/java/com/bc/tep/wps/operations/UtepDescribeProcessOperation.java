@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class UtepDescribeProcessOperation {
 
-    public static final String INPUT_PRODUCT_NAME_PATTERN = "ESACCI-LC-L4-LCCS-Map-300m-P5Y-{2000,2005,2010}-v1.[34].nc";
+    public static final String INPUT_PRODUCT_NAME_PATTERN = "ESACCI-LC-L4-LCCS-Map-300m-P5Y-20100101-v1.6.1_urban_bit_lzw.tif";
     private static final String CATALINA_BASE = System.getProperty("catalina.base");
 
     public List<ProcessDescriptionType> getProcesses(String processId) throws IOException {
@@ -39,7 +39,7 @@ public class UtepDescribeProcessOperation {
         subsettingProcess.setProcessVersion("1.0");
         subsettingProcess.setIdentifier(str2CodeType("subsetting"));
         subsettingProcess.setTitle(str2LanguageStringType("Subsetting service"));
-        subsettingProcess.setAbstract(str2LanguageStringType("This is a Subsetting Tool for LC-CCI"));
+        subsettingProcess.setAbstract(str2LanguageStringType("This is a Subsetting Tool for Urban TEP"));
 
         DataInputs dataInputs = getDataInputs();
         subsettingProcess.setDataInputs(dataInputs);
@@ -107,7 +107,7 @@ public class UtepDescribeProcessOperation {
         dataInputs.getInput().add(west);
 
         List<Object> inputSourceProductList = new ArrayList<>();
-        Path dir = Paths.get(CATALINA_BASE + PropertiesWrapper.get("wps.application.path"), PropertiesWrapper.get("lc.cci.input.directory"));
+        Path dir = Paths.get(CATALINA_BASE + PropertiesWrapper.get("wps.application.path"), PropertiesWrapper.get("utep.input.directory"));
         List<File> files = new ArrayList<>();
         DirectoryStream<Path> stream = Files.newDirectoryStream(dir, INPUT_PRODUCT_NAME_PATTERN);
         for (Path entry : stream) {

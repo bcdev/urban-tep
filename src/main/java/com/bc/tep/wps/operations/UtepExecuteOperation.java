@@ -123,7 +123,7 @@ public class UtepExecuteOperation {
 
     private Path getTargetDirectoryPath(String jobId) throws IOException {
         Path targetDirectoryPath = Paths.get(CATALINA_BASE + PropertiesWrapper.get("wps.application.path")
-                                             + "/" + PropertiesWrapper.get("lc.cci.output.directory"),
+                                             + "/" + PropertiesWrapper.get("utep.output.directory"),
                                              jobId);
         Files.createDirectories(targetDirectoryPath);
         return targetDirectoryPath;
@@ -131,7 +131,7 @@ public class UtepExecuteOperation {
 
     private Product getSourceProduct(Map<String, String> inputParameters) throws IOException {
         final Product sourceProduct;
-        Path dir = Paths.get(CATALINA_BASE + PropertiesWrapper.get("wps.application.path"), PropertiesWrapper.get("lc.cci.input.directory"));
+        Path dir = Paths.get(CATALINA_BASE + PropertiesWrapper.get("wps.application.path"), PropertiesWrapper.get("utep.input.directory"));
         List<File> files = new ArrayList<>();
         DirectoryStream<Path> stream = Files.newDirectoryStream(dir, inputParameters.get("sourceProduct"));
         for (Path entry : stream) {
