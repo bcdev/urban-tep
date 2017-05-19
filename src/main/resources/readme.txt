@@ -6,17 +6,12 @@ VM login
  o or via ssh
  o urbantep software pre-installed in /urbantep/
 
-Prepare the environment
-=======================
-
-export $PATH=/urbantep/software/urbantep-dev/bin:$PATH
-
 Example setup
 =============
 
 cd ~
 rm -r example
-setup-example.sh
+/urbantep/software/urbantep-dev/bin/setup-example.sh
 cd example
 ls -l $(find . -type f)
 
@@ -47,9 +42,9 @@ Packaging and upload to processing centre
 =========================================
 
 cd ~/example
-package-bc.sh descriptor.xml
-upload-bc.sh descriptor.xml
-describeProcess-bc.sh descriptor.xml
+/urbantep/software/urbantep-dev/bin/package-bc.sh descriptor.xml
+/urbantep/software/urbantep-dev/bin/upload-bc.sh descriptor.xml
+/urbantep/software/urbantep-dev/bin/describeProcess-bc.sh descriptor.xml
 
 Cleaning up
 ===========
