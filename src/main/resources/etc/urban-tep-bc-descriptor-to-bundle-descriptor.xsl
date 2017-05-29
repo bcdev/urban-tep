@@ -7,7 +7,7 @@
                 xmlns:utep="http://urban-tep.eo.esa.int/schema/urban-tep-schema.xsd">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 
-  <xsl:param name="snap.version">3.0.1</xsl:param>
+  <xsl:param name="snap.version">5.0.0</xsl:param>
   <xsl:param name="mcr_root.version">v81</xsl:param>
 
   <xsl:template match="utep:parameter">

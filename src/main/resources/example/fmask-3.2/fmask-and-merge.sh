@@ -9,7 +9,7 @@ mask=${id}_MTLFmask.hdr
 output=${id}-fmask.nc
 
 wd=$(pwd)
-SNAP_DIR=/urbantep/software/snap-3.0.1
+SNAP_DIR=/urbantep/software/snap-5.0.0
 MCR_DIR=/urbantep/software/mcr_root-v81
 FMASK_DIR=$(cd $(dirname $0); pwd)
 

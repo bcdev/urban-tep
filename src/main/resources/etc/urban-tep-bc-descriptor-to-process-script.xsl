@@ -11,12 +11,12 @@
   <xsl:output method="text"/>
   <xsl:preserve-space elements="*"/>
 
-  <xsl:param name="snap.version">3.0.1</xsl:param>
+  <xsl:param name="snap.version">5.0.0</xsl:param>
   <xsl:param name="mcr_root.version">v81</xsl:param>
 
-  <xsl:template mode='mounts' match="utep:dependency[utep:name='snap']"> -v $SNAP_DIR:/urbantep/software/snap-3.0.1 \</xsl:template>
+  <xsl:template mode='mounts' match="utep:dependency[utep:name='snap']"> -v $SNAP_DIR:/urbantep/software/snap-5.0.0 \</xsl:template>
   <xsl:template mode='mounts' match="utep:dependency[utep:name='mcr_root']"> -v $MCR_DIR:/urbantep/software/mcr_root-v81 \</xsl:template>
-  <xsl:template match="utep:dependency[utep:name='snap']">SNAP_DIR=$(ls -ld $(pwd)/snap-3.0.1|awk '{print $11}')
+  <xsl:template match="utep:dependency[utep:name='snap']">SNAP_DIR=$(ls -ld $(pwd)/snap-5.0.0|awk '{print $11}')
 </xsl:template>
   <xsl:template match="utep:dependency[utep:name='mcr_root']">MCR_DIR=$(ls -ld $(pwd)/mcr_root-v81|awk '{print $11}')
 </xsl:template>

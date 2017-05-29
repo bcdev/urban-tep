@@ -113,7 +113,7 @@ Accept-Language: de-DE,de;q=0.8,en-US;q=0.6,en;q=0.4
 Cookie: JSESSIONID=${SESSION_ID}
 " > req-header
 
-cat req-header req-part1 req-part2 req-part3 > req-complete
+cat req-header req-part1 $SOFTWARE_PATH req-part3 > req-complete
 
 cat req-complete | nc $SERVER_NAME $SERVER_PORT > upload-response
 
@@ -124,4 +124,4 @@ else
 	cat upload-response
 fi
 
-rm req-part1 req-part2 req-part3 auth-response req-auth req-complete req-header unauth-response upload-response
+rm req-part1 req-part3 auth-response req-auth req-complete req-header unauth-response upload-response
