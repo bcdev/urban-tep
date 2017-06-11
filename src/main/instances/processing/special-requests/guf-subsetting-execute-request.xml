@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<wps:Execute service="WPS"
+             version="1.0.0"
+             xmlns:wps="http://www.opengis.net/wps/1.0.0"
+             xmlns:ows="http://www.opengis.net/ows/1.1"
+             xmlns:cal="http://www.brockmann-consult.de/calwps/calwpsL3Parameters-schema.xsd"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <ows:Identifier>L2Plus</ows:Identifier>
+
+  <wps:DataInputs>
+    <wps:Input>
+      <ows:Identifier>productionName</ows:Identifier>
+      <wps:Data><wps:LiteralData>TEP Subset test</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleName</ows:Identifier>
+      <wps:Data><wps:LiteralData>urbantep-subsetting</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleVersion</ows:Identifier>
+      <wps:Data><wps:LiteralData>1.0</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>Subset</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    
+    <wps:Input>
+      <ows:Identifier>geoInventory</ows:Identifier>
+      <wps:Data><wps:LiteralData>/calvalus/geoInventory/URBAN_FOOTPRINT_GUF_GLOBAL_12m</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>regionWKT</ows:Identifier>
+      <wps:Data><wps:LiteralData>POLYGON((100 -10,100 0,110 0,110 -10,100 -10))</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <!--
+    <wps:Input>
+      <ows:Identifier>minDate</ows:Identifier>
+      <wps:Data><wps:LiteralData>2012-01-01</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>maxDate</ows:Identifier>
+      <wps:Data><wps:LiteralData>2012-12-31</wps:LiteralData></wps:Data>
+    </wps:Input>
+    -->
+    
+    <wps:Input>
+      <ows:Identifier>calvalus.output.dir</ows:Identifier>
+      <wps:Data><wps:LiteralData>/calvalus/projects/urban-tep/test-guf-subsetting</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>outputFormat</ows:Identifier>
+      <wps:Data><wps:LiteralData>GeoTIFF-BigTIFF</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.compression.type</ows:Identifier>
+      <wps:Data><wps:LiteralData>LZW</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.compression.quality</ows:Identifier>
+      <wps:Data><wps:LiteralData>1.0</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.tiling.width</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.tiling.height</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.reader.tileHeight</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.reader.tileWidth</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.output.compression</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>none</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.job.queuename</ows:Identifier>
+      <wps:Data><wps:LiteralData>test</wps:LiteralData></wps:Data>
+    </wps:Input>     
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.map.maxattempts</ows:Identifier>
+      <wps:Data><wps:LiteralData>1</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.task.timeout</ows:Identifier>
+      <wps:Data><wps:LiteralData>1800000</wps:LiteralData></wps:Data>
+    </wps:Input>
+    
+  </wps:DataInputs>
+</wps:Execute>

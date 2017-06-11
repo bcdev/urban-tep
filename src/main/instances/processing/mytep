@@ -1,0 +1,19 @@
+#!/bin/bash
+# TEP environment setup
+# usage:  . mytep
+
+export CALVALUS_INST=/home/cvop/tep-inst
+export CALVALUS_SHARE=/home/cvop/share
+
+export CALVALUS_PRODUCTION_JAR=$CALVALUS_SHARE/lib/calvalus-production-2.10-tools.jar
+export CALVALUS_BEAM_VERSION=snap-6.0-SNAPSHOT
+export CALVALUS_CALVALUS_VERSION=calvalus-2.11-SNAPSHOT
+
+export PYTHONPATH=$CALVALUS_INST:$CALVALUS_INST/lib:$CALVALUS_SHARE/lib:$PYTHONPATH
+export PATH=$CALVALUS_INST:$CALVALUS_INST/bin:$CALVALUS_SHARE/bin:$CALVALUS_SHARE/lib:$PATH
+
+PS1="\[\e]0;\u@\h: \w\a\]\[\e[1;32m\]\u \[\e[1;34m\]\w\[\e[0m\] \[\e[0;31m\](TEP)\[\e[0m\]$ "
+
+echo "using Calvalus     $CALVALUS_CALVALUS_VERSION"
+echo "using SNAP         $CALVALUS_BEAM_VERSION"
+echo "using TEP instance $CALVALUS_INST"

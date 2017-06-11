@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<wps:Execute service="WPS"
+             version="1.0.0"
+             xmlns:wps="http://www.opengis.net/wps/1.0.0"
+             xmlns:ows="http://www.opengis.net/ows/1.1"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+	      >
+
+  <ows:Identifier>L2Plus</ows:Identifier>
+
+  <wps:DataInputs>
+    <wps:Input>
+      <ows:Identifier>productionName</ows:Identifier>
+      <wps:Data><wps:LiteralData>Urban-TEP Format kampala</wps:LiteralData></wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>processorBundleName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>urbantep-subsetting</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleVersion</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>1.0</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>timescan-format2</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+<!--
+    <wps:Input>
+      <ows:Identifier>processorParameters</ows:Identifier>
+      <wps:Data>
+        <wps:ComplexData>
+          <parameters>
+            <bandNames>ndbi_min,ndbi_max,ndbi_mean,ndbi_sigma,ndvi_min,ndvi_max,ndvi_mean,ndvi_sigma,mndwi_min,mndwi_max,mndwi_mean,mndwi_sigma,nd57_min,nd57_max,nd57_mean,nd57_sigma,nd42_min,nd42_max,nd42_mean,nd42_sigma,nd32_min,nd32_max,nd32_mean,nd32_sigma</bandNames>
+            <copyMetadata>true</copyMetadata>
+          </parameters>
+        </wps:ComplexData>
+      </wps:Data>
+    </wps:Input>
+-->
+
+    <wps:Input>
+      <ows:Identifier>inputPath</ows:Identifier>
+      <wps:Data><wps:LiteralData>/calvalus/projects/urban-tep/msi-tsseq/kampala-L3-output/timescan-msi-kampala.*.nc</wps:LiteralData></wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.output.dir</ows:Identifier>
+      <wps:Data><wps:LiteralData>/calvalus/projects/urban-tep/msi-timescan/kampala2</wps:LiteralData></wps:Data>
+    </wps:Input>
+ 
+    <wps:Input>
+      <ows:Identifier>outputFormat</ows:Identifier>
+      <wps:Data><wps:LiteralData>BigGeoTiff</wps:LiteralData>
+<!--      <wps:Data><wps:LiteralData>GeoTiff</wps:LiteralData> -->
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.compression.type</ows:Identifier>
+      <wps:Data><wps:LiteralData>LZW</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.tiling.width</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.bigtiff.tiling.height</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.reader.tileHeight</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.system.snap.dataio.reader.tileWidth</ows:Identifier>
+      <wps:Data><wps:LiteralData>256</wps:LiteralData></wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>quicklooks</ows:Identifier>
+      <wps:Data><wps:LiteralData>true</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.ql.parameters</ows:Identifier>
+      <wps:Data>
+        <wps:ComplexData>
+          <parameters>
+            <quicklooks>
+              <config>
+                <subSamplingX>1</subSamplingX>
+                <subSamplingY>1</subSamplingY>
+                <RGBAExpressions>ndbi_max,ndvi_max,mndwi_mean,</RGBAExpressions>
+                <imageType>png</imageType>
+              </config>
+            </quicklooks>
+          </parameters>
+        </wps:ComplexData>
+      </wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.resume</ows:Identifier>
+      <wps:Data><wps:LiteralData>true</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.task.timeout</ows:Identifier>
+      <wps:Data><wps:LiteralData>7200000</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.job.queuename</ows:Identifier>
+        <wps:Data><wps:LiteralData>tep</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.map.maxattempts</ows:Identifier>
+        <wps:Data><wps:LiteralData>2</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.map.java.opts</ows:Identifier>
+        <wps:Data><wps:LiteralData>-Djava.awt.headless=true -Xmx4096M -XX:ReservedCodeCacheSize=100m</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.map.memory.mb</ows:Identifier>
+        <wps:Data><wps:LiteralData>5120</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.fs.permissions.umask-mode</ows:Identifier>
+        <wps:Data><wps:LiteralData>002</wps:LiteralData></wps:Data>
+    </wps:Input>
+  </wps:DataInputs>
+
+</wps:Execute>

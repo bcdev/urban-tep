@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> <wps:Execute service="WPS"
+             version="1.0.0"
+             xmlns:wps="http://www.opengis.net/wps/1.0.0"
+             xmlns:ows="http://www.opengis.net/ows/1.1"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+  <ows:Identifier>L2</ows:Identifier>
+  <wps:DataInputs>
+    <wps:Input>
+      <ows:Identifier>productionName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>10m AC London</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>s2ac</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    
+    <wps:Input>
+      <ows:Identifier>processorBundleVersion</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>1.6</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    
+    <wps:Input>
+      <ows:Identifier>processorName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>s2ac-ac</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>geoInventory</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>/calvalus/geoInventory/S2_L1C_v2</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>regionWKT</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>POLYGON((-0.516627355653 51.2668343542,-0.549537089505 51.6922328979,0.316005469631 51.7152155547,0.34091720084 51.2894714993,-0.516627355653 51.2668343542))</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>dateList</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>2017-01-02 2016-11-30 2016-10-11 2016-10-04 2016-09-14 2016-09-11 2016-08-15 2016-08-12 2016-07-06 2016-06-06 2016-05-27 2016-05-04 2016-04-14 2016-03-25 2015-12-09 2015-09-30 2015-09-10 2015-08-01</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.input.format</ows:Identifier>
+      <wps:Data><wps:LiteralData>CALVALUS-SENTINEL-2-MSI-MultiRes</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.output.dir</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>/calvalus/projects/urban-tep/mattia-london-10m</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapred.map.max.attempts</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>2</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.map.java.opts</ows:Identifier>
+      <wps:Data><wps:LiteralData>-Djava.awt.headless=true -Xmx512M</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.map.memory.mb</ows:Identifier>
+      <wps:Data><wps:LiteralData>8192</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.map.failures.maxpercent</ows:Identifier>
+      <wps:Data><wps:LiteralData>20</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.task.timeout</ows:Identifier>
+      <wps:Data><wps:LiteralData>43200000</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.job.queuename</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>test</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+  </wps:DataInputs>
+</wps:Execute>

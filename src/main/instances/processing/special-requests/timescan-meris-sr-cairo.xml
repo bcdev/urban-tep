@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<wps:Execute service="WPS"
+             version="1.0.0"
+             xmlns:wps="http://www.opengis.net/wps/1.0.0"
+             xmlns:ows="http://www.opengis.net/ows/1.1"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <ows:Identifier>L3</ows:Identifier>
+
+  <wps:DataInputs>
+
+    <wps:Input>
+      <ows:Identifier>productionName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>TEP timescan meris cairo</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleName</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>calvalus-landsat</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>processorBundleVersion</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>1.0</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>inputPath</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>/calvalus/eodata/MERIS_SR_FR/v2.0/${yyyy}/${yyyy}-${MM}-${dd}/ESACCI-LC-L3-SR-MERIS-300m-P7D-h42v(11|12)-........-v2.0.nc$</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>minDate</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>2003-01-01</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>maxDate</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>2012-12-31</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>periodLength</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>3650</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>regionWKT</ows:Identifier>
+         <wps:Data>
+             <wps:LiteralData>POLYGON((30.912 29.726,30.912 30.73,32.067 30.73,32.067 29.726,30.912 29.726))</wps:LiteralData>
+         </wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.l3.parameters</ows:Identifier>
+      <wps:Data>
+        <wps:ComplexData>
+          <parameters>
+            <compositingType>MOSAICKING</compositingType>
+            <planetaryGrid>org.esa.snap.binning.support.PlateCarreeGrid</planetaryGrid>
+            <numRows>64800</numRows>
+            <superSampling>1</superSampling>
+            <maskExpr>current_pixel_state == 1 or current_pixel_state == 2 or current_pixel_state == 3</maskExpr>
+            <variables>
+              <variable>
+                <name>ndvi</name>
+                <expr>(sr_14_mean - sr_7_mean) / (sr_14_mean + sr_7_mean)</expr>
+              </variable>
+              <variable>
+                <name>evi2</name>
+                <expr>2.5 * (sr_14_mean - sr_7_mean) / (sr_14_mean + 2.4 * sr_7_mean + 1)</expr>
+              </variable>
+              <variable>
+                <name>msavi</name>
+                <expr>sr_14_mean + 0.5 - sqrt((sr_14_mean-1)*(sr_14_mean-1)-8*(sr_14_mean-sr_7_mean)) / 2</expr>
+              </variable>
+              <variable>
+                <name>tep4</name>
+                <expr>(sr_5_mean-sr_2_mean)/(sr_5_mean+sr_2_mean) - (sr_7_mean-sr_5_mean)/(sr_7_mean+sr_5_mean) + (sr_14_mean-sr_7_mean)/(sr_14_mean+sr_7_mean)</expr>
+              </variable>
+              <variable>
+                <name>tep5</name>
+                <expr>(sr_5_mean-sr_2_mean)/(sr_5_mean+sr_2_mean) - (sr_14_mean-sr_7_mean)/(sr_14_mean+sr_7_mean)</expr>
+              </variable>
+              <variable>
+                <name>tep6</name>
+                <expr>(sr_2_mean+sr_7_mean)/2</expr>
+              </variable>
+            </variables>
+            <aggregators>
+              <aggregator>
+                <type>MIN_MAX</type>
+                <varName>ndvi</varName>
+              </aggregator>
+              <aggregator>
+                <type>AVG</type>
+                <varName>ndvi</varName>
+              </aggregator>
+              <aggregator>
+                <type>PERCENTILE</type>
+                <percentage>10</percentage>
+                <varName>ndvi</varName>
+              </aggregator>
+              <aggregator>
+                <type>PERCENTILE</type>
+                <percentage>90</percentage>
+                <varName>ndvi</varName>
+              </aggregator>
+              <aggregator>
+                <type>AVG</type>
+                <varName>evi2</varName>
+              </aggregator>
+              <aggregator>
+                <type>PERCENTILE</type>
+                <percentage>50</percentage>
+                <varName>msavi</varName>
+              </aggregator>
+              <aggregator>
+                <type>AVG</type>
+                <varName>tep4</varName>
+              </aggregator>
+              <aggregator>
+                <type>AVG</type>
+                <varName>tep5</varName>
+              </aggregator>
+              <aggregator>
+                <type>AVG</type>
+                <varName>tep6</varName>
+              </aggregator>
+            </aggregators>
+          </parameters>
+        </wps:ComplexData>
+      </wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.output.dir</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>/calvalus/projects/urban-tep/timescan-meris-sr-cairo</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.output.format</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>GeoTIFF</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.output.compression</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>false</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+
+<!--
+    <wps:Input>
+      <ows:Identifier>calvalus.ql.parameters</ows:Identifier>
+      <wps:Data>
+        <wps:ComplexData>
+          <parameters>
+            <quicklooks>
+              <config>
+                <subSamplingX>1</subSamplingX>
+                <subSamplingY>1</subSamplingY>
+                <bandName>ndvi_max</bandName>
+                <cpdURL>hdfs://calvalus/calvalus/auxiliary/cpd/esa_cci_lc_ndvi.cpd</cpdURL>
+                <imageType>jpeg</imageType>
+              </config>
+            </quicklooks>
+          </parameters>
+        </wps:ComplexData>
+      </wps:Data>
+    </wps:Input>
+-->
+
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.reduce.java.opts</ows:Identifier>
+        <wps:Data><wps:LiteralData>-Djava.awt.headless=true -Xmx3588M -XX:ReservedCodeCacheSize=100m</wps:LiteralData></wps:Data>
+    </wps:Input>
+    <wps:Input>
+        <ows:Identifier>calvalus.hadoop.mapreduce.reduce.memory.mb</ows:Identifier>
+        <wps:Data><wps:LiteralData>4096</wps:LiteralData></wps:Data>
+    </wps:Input>
+
+    <wps:Input>
+      <ows:Identifier>calvalus.system.beam.pixelGeoCoding.useTiling</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>true</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.job.queuename</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>high</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>     
+    <wps:Input>
+      <ows:Identifier>calvalus.hadoop.mapreduce.map.maxattempts</ows:Identifier>
+      <wps:Data>
+        <wps:LiteralData>2</wps:LiteralData>
+      </wps:Data>
+    </wps:Input>
+  </wps:DataInputs>
+
+</wps:Execute>

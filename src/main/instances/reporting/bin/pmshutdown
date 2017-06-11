@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "call   : pmshutdown <workflow>"
+    echo "example: pmshutdown modis.py"
+    exit 1
+fi
+
+if [ "$CALVALUS_INST" == "" ]; then CALVALUS_INST=.; fi
+workflow=$(basename ${1%.py})
+workflow=${workflow%.sh}
+
+if [ ! -e $CALVALUS_INST/${workflow}.pid ]; then
+    echo "missing ${workflow}.pid file in $CALVALUS_INST"
+    ps -elf|grep python
+    exit 1
+fi
+
+kill $(cat $CALVALUS_INST/${workflow}.pid)

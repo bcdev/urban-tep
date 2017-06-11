@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "call   : pmstartup <workflow>"
+    echo "example: pmstartup modis.py"
+    exit 1
+fi
+
+if [ "$CALVALUS_INST" == "" ]; then CALVALUS_INST=.; fi
+workflow=$(basename ${1%.py})
+workflow=${workflow%.sh}
+
+if [ -e ${workflow}.pid ]
+then
+    if kill -0 $(cat ${workflow}.pid) 2> /dev/null
+    then
+        ps -elf | grep $(cat ${workflow}.pid) | grep -v grep
+        echo "process already running"
+        echo "delete ${workflow}.pid file if running process is not the workflow"
+        exit 1
+    fi
+fi
+
+if [ -e $CALVALUS_INST/${workflow}.py ]; then
+    nohup python -u $CALVALUS_INST/${workflow}.py > $CALVALUS_INST/${workflow}.out 2>&1 &
+else
+    nohup $CALVALUS_INST/${workflow}.sh > $CALVALUS_INST/${workflow}.out 2>&1 &
+fi
+echo $! > $CALVALUS_INST/${workflow}.pid
+sleep 2
+if [ -e $CALVALUS_INST/${workflow}.py ]; then
+    cat $CALVALUS_INST/${workflow}.status
+fi

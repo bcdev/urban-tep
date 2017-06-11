@@ -1,0 +1,10 @@
+#!/bin/bash
+# REPORTING environment setup
+# usage:  . myreporting
+
+export CALVALUS_INST=/home/cvop/reporting-inst
+export PATH=$CALVALUS_INST/bin:$PATH
+
+PS1="\[\e]0;\u@\h: \w\a\]\[\e[1;32m\]\u \[\e[1;34m\]\w\[\e[0m\] \[\e[0;31m\](REPORTING)\[\e[0m\]$ "
+
+echo "using REPORTING instance $CALVALUS_INST"
